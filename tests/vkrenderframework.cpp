@@ -510,6 +510,10 @@ void VkRenderFramework::GetPhysicalDeviceFeatures(VkPhysicalDeviceFeatures *feat
     }
 }
 
+bool VkRenderFramework::IsPlatform(std::string platform) {
+    return (!vk_gpu_table.find(platform)->second.compare(pdp().deviceName));
+}
+
 void VkRenderFramework::GetPhysicalDeviceProperties(VkPhysicalDeviceProperties *props) { *props = pdp_; }
 
 void VkRenderFramework::InitState(VkPhysicalDeviceFeatures *features, void *create_device_pnext,

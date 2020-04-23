@@ -234,6 +234,7 @@ class VkRenderFramework : public VkTestFramework {
     void InitRenderTarget(uint32_t targets, VkImageView *dsBinding);
     void DestroyRenderTarget();
 
+    bool IsPlatform(std::string platform);
     void GetPhysicalDeviceFeatures(VkPhysicalDeviceFeatures *features);
     void GetPhysicalDeviceProperties(VkPhysicalDeviceProperties *props);
     void InitState(VkPhysicalDeviceFeatures *features = nullptr, void *create_device_pnext = nullptr,
@@ -608,6 +609,15 @@ class VkPipelineObj : public vk_testing::Pipeline {
     VkDeviceObj *m_device;
     std::vector<VkPipelineShaderStageCreateInfo> m_shaderStages;
     std::vector<VkPipelineColorBlendAttachmentState> m_colorAttachments;
+};
+
+const std::unordered_map<std::string, std::string> vk_gpu_table = {
+    {"GalaxyS10", "Mali-G76"},
+    {"Pixel3", "Adreno (TM) 630"},
+    {"PixelC", "NVIDIA Tegra X1"},
+    {"NexusPlayer", "PowerVR Rogue G6430"},
+    {"ShieldTV", "NVIDIA Tegra X1 (nvgpu)"},
+    {"Pixel3aXL", "Adreno (TM) 615"},
 };
 
 #endif  // VKRENDERFRAMEWORK_H
