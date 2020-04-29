@@ -1273,6 +1273,11 @@ class HelperFileOutputGenerator(OutputGenerator):
                     '            }\n'
                     '        }\n'
                     '    }\n',
+                'VkSwapchainCreateInfoKHR':
+                    '    if ((in_struct->imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && in_struct->pQueueFamilyIndices) {\n'
+                    '        pQueueFamilyIndices = new uint32_t[in_struct->queueFamilyIndexCount];\n'
+                    '        memcpy ((void *)pQueueFamilyIndices, (void *)in_struct->pQueueFamilyIndices, sizeof(uint32_t)*in_struct->queueFamilyIndexCount);\n'
+                    '    }\n',
             }
 
             custom_copy_txt = {

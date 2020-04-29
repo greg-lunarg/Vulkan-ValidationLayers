@@ -14510,7 +14510,7 @@ safe_VkSwapchainCreateInfoKHR::safe_VkSwapchainCreateInfoKHR(const VkSwapchainCr
     oldSwapchain(in_struct->oldSwapchain)
 {
     pNext = SafePnextCopy(in_struct->pNext);
-    if (in_struct->pQueueFamilyIndices) {
+    if ((in_struct->imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && in_struct->pQueueFamilyIndices) {
         pQueueFamilyIndices = new uint32_t[in_struct->queueFamilyIndexCount];
         memcpy ((void *)pQueueFamilyIndices, (void *)in_struct->pQueueFamilyIndices, sizeof(uint32_t)*in_struct->queueFamilyIndexCount);
     }
@@ -14541,7 +14541,7 @@ safe_VkSwapchainCreateInfoKHR::safe_VkSwapchainCreateInfoKHR(const safe_VkSwapch
     clipped = copy_src.clipped;
     oldSwapchain = copy_src.oldSwapchain;
     pNext = SafePnextCopy(copy_src.pNext);
-    if (copy_src.pQueueFamilyIndices) {
+    if ((copy_src.imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && copy_src.pQueueFamilyIndices) {
         pQueueFamilyIndices = new uint32_t[copy_src.queueFamilyIndexCount];
         memcpy ((void *)pQueueFamilyIndices, (void *)copy_src.pQueueFamilyIndices, sizeof(uint32_t)*copy_src.queueFamilyIndexCount);
     }
@@ -14574,7 +14574,7 @@ safe_VkSwapchainCreateInfoKHR& safe_VkSwapchainCreateInfoKHR::operator=(const sa
     clipped = copy_src.clipped;
     oldSwapchain = copy_src.oldSwapchain;
     pNext = SafePnextCopy(copy_src.pNext);
-    if (copy_src.pQueueFamilyIndices) {
+    if ((copy_src.imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && copy_src.pQueueFamilyIndices) {
         pQueueFamilyIndices = new uint32_t[copy_src.queueFamilyIndexCount];
         memcpy ((void *)pQueueFamilyIndices, (void *)copy_src.pQueueFamilyIndices, sizeof(uint32_t)*copy_src.queueFamilyIndexCount);
     }
@@ -14610,7 +14610,7 @@ void safe_VkSwapchainCreateInfoKHR::initialize(const VkSwapchainCreateInfoKHR* i
     clipped = in_struct->clipped;
     oldSwapchain = in_struct->oldSwapchain;
     pNext = SafePnextCopy(in_struct->pNext);
-    if (in_struct->pQueueFamilyIndices) {
+    if ((in_struct->imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && in_struct->pQueueFamilyIndices) {
         pQueueFamilyIndices = new uint32_t[in_struct->queueFamilyIndexCount];
         memcpy ((void *)pQueueFamilyIndices, (void *)in_struct->pQueueFamilyIndices, sizeof(uint32_t)*in_struct->queueFamilyIndexCount);
     }
@@ -14636,7 +14636,7 @@ void safe_VkSwapchainCreateInfoKHR::initialize(const safe_VkSwapchainCreateInfoK
     clipped = copy_src->clipped;
     oldSwapchain = copy_src->oldSwapchain;
     pNext = SafePnextCopy(copy_src->pNext);
-    if (copy_src->pQueueFamilyIndices) {
+    if ((copy_src->imageSharingMode != VK_SHARING_MODE_EXCLUSIVE) && copy_src->pQueueFamilyIndices) {
         pQueueFamilyIndices = new uint32_t[copy_src->queueFamilyIndexCount];
         memcpy ((void *)pQueueFamilyIndices, (void *)copy_src->pQueueFamilyIndices, sizeof(uint32_t)*copy_src->queueFamilyIndexCount);
     }
