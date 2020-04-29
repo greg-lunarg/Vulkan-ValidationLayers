@@ -504,14 +504,6 @@ bool BestPractices::PreCallValidateAllocateMemory(VkDevice device, const VkMemor
 void BestPractices::ManualPostCallRecordAllocateMemory(VkDevice device, const VkMemoryAllocateInfo* pAllocateInfo,
                                                        const VkAllocationCallbacks* pAllocator, VkDeviceMemory* pMemory,
                                                        VkResult result) {
-    if (result != VK_SUCCESS) {
-        static std::vector<VkResult> error_codes = {VK_ERROR_OUT_OF_HOST_MEMORY, VK_ERROR_OUT_OF_DEVICE_MEMORY,
-                                                    VK_ERROR_TOO_MANY_OBJECTS, VK_ERROR_INVALID_EXTERNAL_HANDLE,
-                                                    VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR};
-        static std::vector<VkResult> success_codes = {};
-        ValidateReturnCodes("vkReleaseFullScreenExclusiveModeEXT", result, error_codes, success_codes);
-        return;
-    }
     num_mem_objects++;
 }
 
